@@ -8,7 +8,7 @@ if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
     git clone --quiet --branch=gh-pages https://$GH_TOKEN@github.com/$TRAVIS_REPO_SLUG.git gh-pages > /dev/null
 
     echo -e "Copy apidocs to gh-pages repo root"
-    cp -Rf $HOME/target/site/apidocs/* .
+    cp -Rf $HOME/build/$TRAVIS_REPO_SLUG/target/site/apidocs/* .
 
     echo -e "Adding, committing, and pushing apidocs to gh-pages repo"
     git add -f .

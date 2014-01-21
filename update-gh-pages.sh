@@ -9,7 +9,12 @@ if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
 
     echo -e "Copy apidocs to gh-pages repo root"
     cd gh-pages
-    cp -Rf $TRAVIS_BUILD_DIR/target/site/apidocs/* .
+    if [ -d "$TRAVIS_BUILD_DIR/target/apidocs" ]; then
+        cp -Rf $TRAVIS_BUILD_DIR/target/apidocs/* .
+    fi
+    if [ -d "$TRAVIS_BUILD_DIR/target/site/apidocs" ]; then
+        cp -Rf $TRAVIS_BUILD_DIR/target/site/apidocs/* .
+    fi
 
     echo -e "Adding, committing, and pushing apidocs to gh-pages repo"
     git add -f .
